@@ -1,0 +1,4 @@
+config BR2_PACKAGE_CCR_TEST
+	bool "simple test for CCR/CQT"
+	help
+		Simple test for CCR/CQT

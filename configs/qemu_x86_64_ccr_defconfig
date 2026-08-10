@@ -1,0 +1,35 @@
+# Architecture
+BR2_x86_64=y
+
+# System
+BR2_GLOBAL_PATCH_DIR="$(BR2_EXTERNAL)/board/qemu/x86_64/patches"
+BR2_SYSTEM_DHCP="eth0"
+
+# Filesystem
+BR2_TARGET_ROOTFS_EXT2=y
+BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL)/board/qemu/x86_64/rootfs_overlay"
+
+# Packages
+BR2_PACKAGE_NVME=y
+BR2_PACKAGE_CCR_TEST=y
+
+# Image
+BR2_ROOTFS_POST_BUILD_SCRIPT="board/qemu/x86_64/post-build.sh"
+BR2_ROOTFS_POST_IMAGE_SCRIPT="$(BR2_EXTERNAL)/board/qemu/post-image.sh"
+BR2_ROOTFS_POST_SCRIPT_ARGS="$(BR2_DEFCONFIG)"
+
+# Linux headers same as kernel
+BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_7_1=y
+
+# Kernel
+BR2_LINUX_KERNEL=y
+BR2_LINUX_KERNEL_CUSTOM_GIT=y
+BR2_LINUX_KERNEL_CUSTOM_REPO_URL="https://github.com/khalfella/linux.git"
+BR2_LINUX_KERNEL_CUSTOM_REPO_VERSION="users/mkhalfella/ccr_testing"
+BR2_LINUX_KERNEL_USE_CUSTOM_CONFIG=y
+BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE="board/qemu/x86_64/linux.config"
+BR2_LINUX_KERNEL_NEEDS_HOST_LIBELF=y
+
+# Host tools
+BR2_PACKAGE_HOST_QEMU=y
+BR2_PACKAGE_HOST_QEMU_SYSTEM_MODE=y

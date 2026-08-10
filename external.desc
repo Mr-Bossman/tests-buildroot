@@ -1,0 +1,2 @@
+name: KERNEL_TESTS
+desc: Simple distro for testing various kernel patches and features.
